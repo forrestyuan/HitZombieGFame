@@ -1,6 +1,7 @@
 # HitZombieGFame
 
 a small game hitting zombie game 
+点击：[在线试玩链接](https://forrestyuan.github.io/HitZombieGFame/index.html)
 
 <h3>玩法指南</h3>
 
