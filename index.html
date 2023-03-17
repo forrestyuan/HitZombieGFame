@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>植物大战僵尸</title>
+    <style type="text/css">
+      canvas {
+        border: 2px solid green;
+        cursor: grab;
+      }
+      .tipBox {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        background-color: green;
+        width: 800px;
+        height: 40px;
+        color: aliceblue;
+        border: 2px solid green;
+      }
+      #sunPoints,
+      #countBitZombie,
+      #timeLeft {
+        font-size: 20px;
+        margin: 0 5px;
+      }
+      #countBitZombie {
+        font-weight: bolder;
+        color: red;
+        transform: scale(2);
+      }
+      button {
+        width: 100px;
+        background-color: green;
+        color: white;
+        font-size: 16px;
+        padding: 5px 10px;
+      }
+      button:disabled {
+        background-color: gray;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="tipBox">
+      <span>收集的阳光: <span id="sunPoints">25</span> 点</span>
+      <span>打爆僵尸: <span id="countBitZombie">0</span> 个</span>
+      <span>剩余时间: <span id="timeLeft">180</span>秒</span>
+    </div>
+    <canvas id="gameCanvas" width="800" height="600"></canvas>
+    <div>
+      <button id="startButton" onclick="startGame()">开始游戏</button>
+      <button id="pauseButton" onclick="pauseGame()">暂停</button>
+      <button id="resumeButton" onclick="resumeGame()">继续</button>
+      <button id="endButton" onclick="endGame()">结束游戏</button>
+    </div>
+    <div>
+      <h3>玩法指南</h3>
+      <ul>
+        <li>鼠标：用于种植植物和收集太阳。</li>
+        <li>您可以使用太阳能够收集太阳来购买植物。</li>
+        <li>每颗植物只有80发子弹哦，打完后自动死亡</li>
+        <li>左上角显示能量集齐100后可在页面上任意位置鼠标点击，种下一颗植物</li>
+      </ul>
+      <div>
+        <span
+          >- 尽可能多地种植植物来保护您的房子。<br />
+          - 小心您的太阳点数，只有在必要时才使用它们。<br />
+          - 审慎选择攻击僵尸的时机，以避免浪费时间。<br />
+          - 注意时间限制，确保您有足够的时间来保护您的房子。</span
+        >
+      </div>
+    </div>
+    <script src="./index.js"></script>
+  </body>
+</html>
