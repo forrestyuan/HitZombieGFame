@@ -3,6 +3,9 @@
 a small game hitting zombie game 
 点击：[在线试玩链接](https://forrestyuan.github.io/HitZombieGFame/index.html)
 
+![动图](https://github.com/forrestyuan/HitZombieGFame/blob/main/img/previewGIF.gif)
+
+* 更新：增加了“种植物辅助框”
 <h3>玩法指南</h3>
 
 * 鼠标：用于种植植物和收集太阳。
