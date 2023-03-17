@@ -3,6 +3,9 @@
   <head>
     <title>植物大战僵尸</title>
     <style type="text/css">
+      .mainBox{
+        position: relative;
+      }
       canvas {
         border: 2px solid green;
         cursor: grab;
@@ -38,6 +41,17 @@
       button:disabled {
         background-color: gray;
       }
+      .preRectLine {
+        display: inline-block;
+        position: absolute;
+        z-index: 200;
+        width: 50px;
+        height: 50px;
+        border: solid 2px red;
+        font-size:14px;
+        color: white;
+        text-align: center;
+      }
     </style>
   </head>
 
@@ -47,7 +61,11 @@
       <span>打爆僵尸: <span id="countBitZombie">0</span> 个</span>
       <span>剩余时间: <span id="timeLeft">180</span>秒</span>
     </div>
+    <div>
+
+    </div class="mainBox">
     <canvas id="gameCanvas" width="800" height="600"></canvas>
+    <span class="preRectLine" id="preRectLine">点击<br>种植物</span>
     <div>
       <button id="startButton" onclick="startGame()">开始游戏</button>
       <button id="pauseButton" onclick="pauseGame()">暂停</button>

@@ -16,6 +16,8 @@ const startButton = document.getElementById("startButton");
 const pauseButton = document.getElementById("pauseButton");
 const resumeButton = document.getElementById("resumeButton");
 const endButton = document.getElementById("endButton");
+//预放置植物方框提示
+const preRectLine = document.getElementById('preRectLine');
 
 // 资源加载
 let resources = {
@@ -221,6 +223,7 @@ function updateTimeLeft() {
   }
 }
 
+
 // 初始化按钮状态
 function initButtons() {
   setButtonDisable(true, true, true, true)
@@ -277,14 +280,6 @@ canvas.addEventListener("click", function (event) {
   let x = event.offsetX;
   let y = event.offsetY;
   if (gameState === "playing") {
-    // 创建豌豆射手
-    if (sunPoints >= 100 && x >= 50 && x <= 600 && y >= 50 && y <= 800) {
-      let peaShooter = new PeaShooter(x, y, images.peaShooter);
-      plants.push(peaShooter);
-      sunPoints -= 100;
-      sunPointsSpan.innerText = sunPoints;
-    }
-
     // 点击收集太阳
     for (let i = plants.length - 1; i >= 0; i--) {
       if (plants[i] instanceof Sun && plants[i].containsPoint(x, y)) {
@@ -296,7 +291,33 @@ canvas.addEventListener("click", function (event) {
     }
   }
 });
+//点击种植物
+preRectLine.addEventListener("click", function (event) {
+  let x = preRectLine.offsetLeft - 10;
+  let y = preRectLine.offsetTop - preRectLine.offsetHeight;
+  if (gameState === "playing") {
+    // 创建豌豆射手
+    if (sunPoints >= 100 && x >= 50 && x <= 600 && y >= 50 && y <= 800) {
+      let peaShooter = new PeaShooter(x, y, images.peaShooter);
+      plants.push(peaShooter);
+      sunPoints -= 100;
+      sunPointsSpan.innerText = sunPoints;
+    }
+  }
+})
+// 鼠标移动事件
+canvas.addEventListener('mousemove', function (event) {
+  let x = event.offsetX;
+  let y = event.offsetY;
+  let rectW = preRectLine.offsetWidth / 2;
+  let rectH = preRectLine.offsetHeight / 2;
+  if (sunPoints >= 100 && x >= 50 && x <= 600 && y >= 50 && y <= 800) {
+    preRectLine.style.cssText = `display:inline-block; left:${x - rectW}px;top:${y + rectH}px`;
+  } else {
+    preRectLine.style.cssText = `display:none;`;
+  }
 
+})
 // 开始游戏循环
 gameLoop();
 // 初始化按钮状态
